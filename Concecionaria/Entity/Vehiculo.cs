@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Concecionaria.Validations;
 
 namespace Concecionaria.Entity
 {
@@ -11,6 +12,8 @@ namespace Concecionaria.Entity
         [Required]
         public string? Modelo { get; set; }
         [Required]
+        [TeslaCar(2009)]
+        public int Año { get; set; }
         public double Importe { get; set; }
         [DataType(DataType.Date)]
         public DateTime FechaBaja { get; set; }

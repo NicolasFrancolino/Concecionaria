@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Concecionaria.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
