@@ -6,10 +6,10 @@ namespace Concecionaria.Entity
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Este valor es requerido")]
         public decimal Importe { get; set; }
         public decimal Descuento { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Este valor es requerido")]
         [DataType(DataType.Date)]
         public DateTime Fecha { get; set; }
         public int VehiculoId { get; set; }

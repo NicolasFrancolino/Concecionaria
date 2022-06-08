@@ -10,16 +10,16 @@ namespace Concecionaria.Entity
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Este valor es requerido")]
         public string Nombre { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Este valor es requerido")]
         public string Apellido { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Este valor es requerido")]
         public string Dni { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Este valor es requerido")]
         public string Direccion { get; set; }
     }
 }

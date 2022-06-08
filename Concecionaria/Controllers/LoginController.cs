@@ -1,6 +1,7 @@
 ﻿using Concecionaria.Models.Users;
 using Concecionaria.Services;
 using Concecionaria.UnitOfWork;
+using Concecionaria.Validations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,6 +35,7 @@ namespace Concecionaria.Controllers
             });
         }
         [HttpPost("Registro")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public ActionResult RegistrarUsuario([FromBody] AuthenticateRequest user)
         {
             if (_uow.UsuarioRepo.ExisteUsuario(user.Email.ToLower()))

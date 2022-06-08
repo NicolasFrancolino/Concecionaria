@@ -4,13 +4,13 @@ namespace Concecionaria.Models.Users
 {
     public class AuthenticateRequest
     {
-        [Required]
+        [Required(ErrorMessage = "Este valor es requerido")]
         public string Username { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Este valor es requerido")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Este valor es requerido")]
         public string Password { get; set; }
     }
 }

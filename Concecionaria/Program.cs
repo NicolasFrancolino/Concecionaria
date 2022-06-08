@@ -3,9 +3,12 @@ using System.Reflection;
 using System.Text;
 using System.Text.Json.Serialization;
 using Concecionaria.Data;
+using Concecionaria.Middleware;
 using Concecionaria.Services;
 using Concecionaria.UnitOfWork;
+using Concecionaria.Validations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -19,6 +22,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<ValidationFilterAttribute>();
+
+builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
+
 builder.Services.AddControllers();
 builder.Services.AddControllers().AddJsonOptions(x =>
 {
@@ -90,7 +97,7 @@ if (app.Environment.IsDevelopment())
         c.DefaultModelsExpandDepth(-1);
     });
 }
-
+app.UseMiddleware<EjemploMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
