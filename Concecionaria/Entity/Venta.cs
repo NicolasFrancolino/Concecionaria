@@ -7,8 +7,8 @@ namespace Concecionaria.Entity
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "Este valor es requerido")]
-        public decimal Importe { get; set; }
-        public decimal Descuento { get; set; }
+        public double Importe { get; set; }
+        public double Descuento { get; set; }
         [Required(ErrorMessage = "Este valor es requerido")]
         [DataType(DataType.Date)]
         public DateTime Fecha { get; set; }

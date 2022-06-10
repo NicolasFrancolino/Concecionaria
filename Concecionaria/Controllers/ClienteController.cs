@@ -1,5 +1,6 @@
 ﻿using Concecionaria.Entity;
 using Concecionaria.UnitOfWork;
+using Concecionaria.Validations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,10 +36,11 @@ namespace Concecionaria.Controllers
         /// <param name="cliente"></param>
         /// <response code="200">Se creo correctamente</response>
         /// <response code="404">Cliente no encontrado</response>
-
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost]
         public ActionResult Post([FromBody] Cliente cliente)
         {
+
             _context.ClienteRepo.Insert(cliente);
             _context.Save();
             return Ok();

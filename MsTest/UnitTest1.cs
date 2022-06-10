@@ -1,33 +1,18 @@
-
 using Concecionaria.Controllers;
 using Concecionaria.Entity;
 using Concecionaria.UnitOfWork;
 using FakeItEasy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit.Sdk;
 
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
-
-namespace Test
+namespace MsTest
 {
     [TestClass]
     public class UnitTest1
     {
-             
-        //[TestMethod]
-        //public void Test1()
-        //{
-        //    var dbfake = A.Fake<IUnitOfWork>();
-        //    A.CallTo(() => dbfake.ClienteRepo.GetAll());
-
-        //    var controller = new ClienteController(dbfake);
-
-        //    var test = controller.Get();
-        //    Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsInstanceOfType(test, typeof(NotFoundResult));
-        //}
-
         [TestMethod]
-        public void Test2()
+        public void TestMethod1()
         {
             Cliente cliente = new Cliente();
             //{
@@ -42,8 +27,6 @@ namespace Test
             var controller = new ClienteController(dbfake);
             var test = controller.Post(cliente);
             Assert.IsInstanceOfType(test, typeof(OkResult));
-
         }
-
     }
 }

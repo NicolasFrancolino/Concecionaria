@@ -10,15 +10,19 @@ namespace Concecionaria.Controllers
     public class VehiculoController : ControllerBase
     {
         private readonly IUnitOfWork _context;
+        private readonly ILogger<VehiculoController> _logger;
 
-        public VehiculoController(IUnitOfWork context)
+        public VehiculoController(IUnitOfWork context, ILogger<VehiculoController> logger )
         {
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Vehiculo>> Get()
         {
+            //_logger.LogDebug("");
+            _logger.LogInformation("Get vehiculos");
             var entidad = _context.VehiculoRepo.GetAll();
             return Ok(entidad);
         }
